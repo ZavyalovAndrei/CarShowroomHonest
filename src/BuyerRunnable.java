@@ -1,6 +1,6 @@
 public class BuyerRunnable implements Runnable {
     CarShowroom carShowroom;
-    int buyerNum;
+    private int buyerNum;
 
     public BuyerRunnable(CarShowroom carShowroom, int buyerNum) {
         this.carShowroom = carShowroom;

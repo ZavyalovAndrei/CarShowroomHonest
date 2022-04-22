@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class CarShowroom {
     private static final int CAR_RELEASE_PLAN = 10;
-    private final List<Car> carsOnStock = new ArrayList<>(CAR_RELEASE_PLAN);
-    private static final List<Car> carsAssortment = new ArrayList<>() {
+    private static final List<Car> CARS_ON_STOCK = new ArrayList<>(CAR_RELEASE_PLAN);
+    private static final List<Car> CARS_ASSORTMENT = new ArrayList<>() {
         {
             add(0, new Car("Белый", "Focus", 125));
         }
@@ -57,8 +57,8 @@ public class CarShowroom {
 
     Manager manager = new Manager(this);
 
-    public Car sellCar() {
-        return manager.sellCar();
+    public void sellCar() {
+        manager.sellCar();
     }
 
     public void acceptCar() {
@@ -66,16 +66,16 @@ public class CarShowroom {
     }
 
     public List<Car> getCarList() {
-        return carsOnStock;
+        return CARS_ON_STOCK;
+    }
+
+    public void addNewCarToStock() {
+        Random random = new Random();
+        int chose = random.nextInt(0, (CARS_ASSORTMENT.size() - 1));
+        CARS_ON_STOCK.add(CARS_ASSORTMENT.get(chose));
     }
 
     public Car getCar() {
-        return carsOnStock.get(0);
-    }
-
-    public Car getNewCar() {
-        Random random = new Random();
-        int chose = random.nextInt(0, (carsAssortment.size() - 1));
-        return carsAssortment.get(chose);
+        return CARS_ON_STOCK.get(0);
     }
 }
