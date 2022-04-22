@@ -32,8 +32,8 @@ public class Manager {
     public void sellCar() {
         try {
             Thread.sleep(NEW_BUYER_COME_DELAY);
-            lock.lock();
             System.out.println(Thread.currentThread().getName() + " зашел в автосалон.");
+            lock.lock();
             while (carShowroom.getCarList().size() == 0) {
                 System.out.println("Менеджер: Автомобилей нет!");
                 condition.await();
