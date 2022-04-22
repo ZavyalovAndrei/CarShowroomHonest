@@ -18,10 +18,10 @@ public class Manager {
     public void receiveCar() {
         try {
             Thread.sleep(RELEASE_NEW_CAR_DELAY);
-            lock.lock();
-            condition.signal();
             carShowroom.addNewCarToStock();
             System.out.println("Производитель Ford: Выпущен 1 автомобиль.");
+            lock.lock();
+            condition.signal();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
@@ -29,7 +29,7 @@ public class Manager {
         }
     }
 
-    public Car sellCar() {
+    public void sellCar() {
         try {
             Thread.sleep(NEW_BUYER_COME_DELAY);
             lock.lock();
@@ -49,6 +49,6 @@ public class Manager {
         } finally {
             lock.unlock();
         }
-        return carShowroom.getCarList().remove(0);
+        carShowroom.getCarList().remove(0);
     }
 }
